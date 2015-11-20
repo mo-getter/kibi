@@ -68,6 +68,11 @@ verify_ssl: true
 log_file: ./kibi.log
 # log_level: DEBUG
 
+# Suggestions for Query Expansion
+suggestions:
+  datasource: edrugtrends-sql
+  entities_query: SELECT id, name FROM entities;
+  synonyms_query: SELECT id, name FROM entity_synonyms WHERE entity_id='@ENTITY@';
 
 # Datasources
 
