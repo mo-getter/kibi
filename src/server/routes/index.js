@@ -9,7 +9,7 @@ router.get('/config', function (req, res, next) {
     'default_app_id',
     'shard_timeout',
     'default_dashboard_id', // added by kibi
-    'suggestions'
+    'query_expansion'
   ];
   var data = _.pick(config.kibana, keys);
 

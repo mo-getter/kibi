@@ -69,10 +69,9 @@ log_file: ./kibi.log
 # log_level: DEBUG
 
 # Suggestions for Query Expansion
-suggestions:
-  datasource: edrugtrends-sql
-  entities_query: SELECT id, name FROM entities;
-  synonyms_query: SELECT id, name FROM entity_synonyms WHERE entity_id='@ENTITY@';
+query_expansion:
+  entities_query_id: entity_suggestions_query
+  synonyms_query_id: entity_synonyms_query
 
 # Datasources
 
