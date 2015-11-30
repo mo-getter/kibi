@@ -22,6 +22,7 @@ define(function (require) {
         Private(require('components/agg_types/buckets/ip_range')),
         Private(require('components/agg_types/buckets/terms')),
         Private(require('components/agg_types/buckets/filters')),
+        Private(require('components/agg_types/buckets/entities')),
         Private(require('components/agg_types/buckets/significant_terms')),
         Private(require('components/agg_types/buckets/geo_hash')),
         Private(require('components/agg_types/buckets/custom_queries'))
