@@ -107,7 +107,6 @@ define(function (require) {
             if ($scope.searchSource !== $scope.searchSource) return;
 
             $scope.hits = resp.hits.hits;
-
             return $scope.searchSource.onResults().then(onResults);
           }).catch(notify.fatal);
 

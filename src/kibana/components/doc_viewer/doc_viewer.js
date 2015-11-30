@@ -26,7 +26,7 @@ define(function (require) {
         $scope.hitJson = angular.toJson($scope.hit, true);
         $scope.formatted = $scope.indexPattern.formatHit($scope.hit);
         $scope.fields = _.keys($scope.flattened).sort();
-
+        
         $scope.toggleColumn = function (fieldName) {
           _.toggleInOut($scope.columns, fieldName);
         };

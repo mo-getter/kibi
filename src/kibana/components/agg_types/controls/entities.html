@@ -1,0 +1,40 @@
+<div class="form-group">
+  <div ng-repeat="entitiy in agg.params.entities">
+    <label>Entity {{$index + 1}}</label>
+    <div class="form-group vis-editor-agg-form-row">
+<!--<tags-input ng-model="tags"
+        class="form-control"
+        name="Entity{{$index}}">
+        <auto-complete source="getSuggestions($query)"></auto-complete>
+      </tags-input> -->
+      <input validate-query
+        ng-model="entity.input.query"
+        type="text"
+        class="form-control"
+        name="Entity{{$index}}">
+      
+
+      <button
+        type="button"
+        ng-click="agg.params.entities.splice($index, 1)"
+        class="btn btn-danger btn-xs">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<input ng-model="agg.params.entities.length" name="filterLength" required min="1" type="number" class="ng-hide" />
+<div class="hintbox" ng-show="aggForm.filterLength.$invalid">
+  <p>
+    <i class="fa fa-danger text-danger"></i>
+    <strong>Required:</strong> You must specify at least one Entity.
+  </p>
+</div>
+
+<div
+  click-focus="'entity'+(agg.params.entities.length-1)"
+  ng-click="agg.params.entities.push({input:{}})"
+  class="sidebar-item-button primary">
+  Add Entity
+</div>
