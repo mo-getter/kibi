@@ -2,11 +2,12 @@
   <div ng-repeat="filter in agg.params.filters">
     <label>Filter {{$index + 1}}</label>
     <div class="form-group vis-editor-agg-form-row">
-      <input validate-query
+      <tags-input
         ng-model="filter.input.query"
-        type="text"
         class="form-control"
         name="filter{{$index}}">
+        <auto-complete source="getSuggestions($query)"></auto-complete>
+      </tags-input>
 
       <button
         type="button"

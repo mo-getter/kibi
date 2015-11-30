@@ -25,8 +25,13 @@ define(function (require) {
               var input = filter.input;
               if (!input) return notif.log('malformed filter agg params, missing "input" query');
 
+              var tags = [];
+              input.query.forEach(function (tag, i) {
+                tags.push(tag.text);
+              });
+
+              input.query = { query_string: { query: tags.join(' OR ') } };
               var query = input.query;
-              if (!query) return notif.log('malformed filter agg params, missing "query" on input');
 
               decorateQuery(query);
 
