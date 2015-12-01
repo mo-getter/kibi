@@ -1,5 +1,8 @@
 define(function (require) {
-  return function FiltersAggDefinition(Private, Notifier) {
+
+  require('components/entity_synonym/entity_synonym');
+
+  return function FiltersAggDefinition(Private, Notifier, entitySynonymsProvider) {
     var _ = require('lodash');
     var angular = require('angular');
     var BucketAggType = Private(require('components/agg_types/buckets/_bucket_agg_type'));
@@ -25,12 +28,14 @@ define(function (require) {
               var input = filter.input;
               if (!input) return notif.log('malformed filter agg params, missing "input" query');
 
-              var tags = [];
+              var synonyms = [];
               input.query.forEach(function (tag, i) {
-                tags.push(tag.text);
+                var entity = tag.text;
+                var newSynonyms = entitySynonymsProvider.getSynonyms(entity);
+                synonyms = _(synonyms).concat(newSynonyms);
               });
 
-              input.query = { query_string: { query: tags.join(' OR ') } };
+              input.query = { query_string: { query: synonyms.join(' OR ') } };
               var query = input.query;
 
               decorateQuery(query);
